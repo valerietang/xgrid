@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f6f8;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+  gap: 8px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+}
+
+/* future-proof state example */
+.cell.marked {
+  background: #222;
+  color: white;
+}
+
+/* placeholder for "X" or elimination later */
+.cell.eliminated {
+  background: #ffdddd;
+  color: #a00;
+  text-decoration: line-through;
+}
