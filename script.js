@@ -1,16 +1,15 @@
 const grid = document.getElementById("numberGrid");
 
-// create 1–100 cells
 for (let i = 1; i <= 100; i++) {
   const cell = document.createElement("div");
-  
+
   cell.classList.add("cell");
   cell.textContent = i;
 
-  // IMPORTANT: makes each cell addressable later
+  // key for future logic (VERY important for elimination system later)
   cell.dataset.number = i;
 
-  // placeholder interaction (you can remove later)
+  // temporary interaction
   cell.addEventListener("click", () => {
     cell.classList.toggle("marked");
   });
