@@ -17,11 +17,17 @@
 
 <div class="main-layout">
 
+    <!-- GRID -->
+
     <div class="grid-container">
         <div class="grid" id="grid"></div>
     </div>
 
+    <!-- SIDE PANEL -->
+
     <div class="panel">
+
+        <!-- CODE INPUT -->
 
         <h2>Enter Code</h2>
 
@@ -42,9 +48,37 @@
 
         <div class="status" id="status"></div>
 
+        <!-- USED CODES -->
+
         <h2>Used Codes</h2>
 
         <div class="used-codes" id="usedCodes"></div>
+
+        <!-- X GUESSING -->
+
+        <div class="guess-section">
+
+            <h2>Guess X</h2>
+
+            <div class="input-group">
+
+                <input
+                    type="number"
+                    id="guessInput"
+                    placeholder="Enter guess..."
+                >
+
+                <button id="guessBtn">
+                    Guess
+                </button>
+
+            </div>
+
+            <div class="guess-status" id="guessStatus"></div>
+
+            <div class="cooldown-timer" id="cooldownTimer"></div>
+
+        </div>
 
     </div>
 
