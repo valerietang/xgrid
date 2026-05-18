@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Placeholder</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Placeholder</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <header class="header">
+<header>
     <h1>Placeholder</h1>
     <p>Placeholder</p>
-  </header>
+</header>
 
-  <main class="container">
-    <div class="grid" id="numberGrid"></div>
-  </main>
+<div class="main-layout">
 
-  <footer class="footer">
-    <p>Placeholder</p>
-  </footer>
+    <div class="grid-container">
+        <div class="grid" id="grid"></div>
+    </div>
 
-  <script src="script.js"></script>
+    <div class="panel">
+
+        <h2>Enter Code</h2>
+
+        <div class="input-group">
+
+            <input
+                type="text"
+                id="codeInput"
+                placeholder="Enter code..."
+                maxlength="4"
+            >
+
+            <button id="submitBtn">
+                Apply
+            </button>
+
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <h2>Used Codes</h2>
+
+        <div class="used-codes" id="usedCodes"></div>
+
+    </div>
+
+</div>
+
+<footer>
+    Placeholder
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
