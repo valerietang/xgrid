@@ -6,6 +6,7 @@
 
 body {
     margin: 0;
+
     font-family: "Inter", sans-serif;
 
     background:
@@ -58,6 +59,7 @@ header p {
 /* GRID CONTAINER */
 
 .grid-container {
+
     background: rgba(255,255,255,0.05);
 
     border: 1px solid rgba(255,255,255,0.08);
@@ -76,6 +78,7 @@ header p {
 /* GRID */
 
 .grid {
+
     display: grid;
 
     grid-template-columns: repeat(10, 60px);
@@ -86,6 +89,7 @@ header p {
 /* CELLS */
 
 .cell {
+
     width: 60px;
     height: 60px;
 
@@ -110,6 +114,7 @@ header p {
 }
 
 .cell:hover {
+
     transform: translateY(-2px);
 
     border-color: rgba(0,200,255,0.35);
@@ -157,6 +162,7 @@ header p {
 /* PANEL */
 
 .panel {
+
     width: 320px;
 
     background: rgba(255,255,255,0.05);
@@ -175,22 +181,27 @@ header p {
 }
 
 .panel h2 {
+
     margin-top: 0;
+
     margin-bottom: 18px;
 
     font-size: 1.2rem;
 }
 
-/* INPUT */
+/* INPUTS */
 
 .input-group {
+
     display: flex;
+
     gap: 10px;
 
     margin-bottom: 18px;
 }
 
 input {
+
     flex: 1;
 
     background: rgba(255,255,255,0.06);
@@ -248,16 +259,27 @@ button:hover {
     filter: brightness(1.08);
 }
 
+button:disabled {
+
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
 /* STATUS */
 
-.status {
+.status,
+.guess-status {
+
     min-height: 22px;
 
     margin-bottom: 20px;
 
     font-size: 14px;
 
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 /* USED CODES */
@@ -269,6 +291,8 @@ button:hover {
     flex-wrap: wrap;
 
     gap: 10px;
+
+    margin-bottom: 28px;
 }
 
 .code-pill {
@@ -282,6 +306,26 @@ button:hover {
     border-radius: 999px;
 
     font-size: 13px;
+}
+
+/* GUESS SECTION */
+
+.guess-section {
+
+    margin-top: 10px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.cooldown-timer {
+
+    font-size: 14px;
+
+    color: #ff8a8a;
+
+    min-height: 20px;
 }
 
 /* FOOTER */
