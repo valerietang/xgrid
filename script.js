@@ -1,12 +1,19 @@
 const grid = document.getElementById("grid");
 
 const codeInput = document.getElementById("codeInput");
-
 const submitBtn = document.getElementById("submitBtn");
 
 const statusEl = document.getElementById("status");
 
 const usedCodesEl = document.getElementById("usedCodes");
+
+/* GUESS SYSTEM */
+
+const guessInput = document.getElementById("guessInput");
+const guessBtn = document.getElementById("guessBtn");
+
+const guessStatus = document.getElementById("guessStatus");
+const cooldownTimer = document.getElementById("cooldownTimer");
 
 /* =========================
    CREATE GRID
@@ -105,17 +112,10 @@ function fibonacciSet(limit) {
 
 const rules = {
 
-    /* multiples of 4 */
-    DJKT: () => {
-        eliminateMultiplesOf(4);
-    },
+    DJKT: () => eliminateMultiplesOf(4),
 
-    /* multiples of 5 */
-    KYIK: () => {
-        eliminateMultiplesOf(5);
-    },
+    KYIK: () => eliminateMultiplesOf(5),
 
-    /* eliminate non-fibonacci */
     KYXQ: () => {
 
         const fibs = fibonacciSet(100);
@@ -128,12 +128,8 @@ const rules = {
         }
     },
 
-    /* multiples of 9 */
-    GSRM: () => {
-        eliminateMultiplesOf(9);
-    },
+    GSRM: () => eliminateMultiplesOf(9),
 
-    /* second digit smaller than first */
     TDUT: () => {
 
         for (let i = 10; i <= 99; i++) {
@@ -148,17 +144,10 @@ const rules = {
         }
     },
 
-    /* multiples of 7 */
-    LUTD: () => {
-        eliminateMultiplesOf(7);
-    },
+    LUTD: () => eliminateMultiplesOf(7),
 
-    /* multiples of 3 */
-    NATR: () => {
-        eliminateMultiplesOf(3);
-    },
+    NATR: () => eliminateMultiplesOf(3),
 
-    /* prime numbers */
     YRSL: () => {
 
         for (let i = 1; i <= 100; i++) {
@@ -169,12 +158,8 @@ const rules = {
         }
     },
 
-    /* multiples of 8 */
-    PYRS: () => {
-        eliminateMultiplesOf(8);
-    },
+    PYRS: () => eliminateMultiplesOf(8),
 
-    /* same digits */
     KTDE: () => {
 
         const doubles = [
@@ -233,7 +218,6 @@ function applyCode() {
 ========================= */
 
 function setStatus(message) {
-
     statusEl.textContent = message;
 }
 
@@ -249,6 +233,96 @@ function addCodePill(code) {
 }
 
 /* =========================
+   X GUESS SYSTEM
+========================= */
+
+let cooldownActive = false;
+
+let cooldownInterval = null;
+
+const COOLDOWN_TIME = 600; // 10 minutes
+
+function handleGuess() {
+
+    if (cooldownActive) return;
+
+    const guess = guessInput.value.trim();
+
+    if (guess === "34") {
+
+        guessStatus.textContent =
+            "Congrats! Now go find the ultimate gamemaster! Code: QNXP.";
+
+        guessStatus.style.color = "#7dffb3";
+
+        cooldownTimer.textContent = "";
+
+        return;
+    }
+
+    startCooldown();
+}
+
+function startCooldown() {
+
+    cooldownActive = true;
+
+    guessInput.disabled = true;
+
+    guessBtn.disabled = true;
+
+    let timeLeft = COOLDOWN_TIME;
+
+    guessStatus.textContent =
+        "Error, your 10-minute cool down begins now.";
+
+    guessStatus.style.color = "#ff8a8a";
+
+    updateCooldownDisplay(timeLeft);
+
+    cooldownInterval = setInterval(() => {
+
+        timeLeft--;
+
+        updateCooldownDisplay(timeLeft);
+
+        if (timeLeft <= 0) {
+
+            clearInterval(cooldownInterval);
+
+            cooldownActive = false;
+
+            guessInput.disabled = false;
+
+            guessBtn.disabled = false;
+
+            guessInput.value = "";
+
+            cooldownTimer.textContent = "";
+
+            guessStatus.textContent =
+                "You may guess again.";
+
+            guessStatus.style.color = "#ffffff";
+        }
+
+    }, 1000);
+}
+
+function updateCooldownDisplay(seconds) {
+
+    const mins = Math.floor(seconds / 60);
+
+    const secs = seconds % 60;
+
+    const formatted =
+        `${mins}:${secs.toString().padStart(2, "0")}`;
+
+    cooldownTimer.textContent =
+        `Cooldown Remaining: ${formatted}`;
+}
+
+/* =========================
    EVENTS
 ========================= */
 
@@ -258,5 +332,16 @@ codeInput.addEventListener("keydown", (e) => {
 
     if (e.key === "Enter") {
         applyCode();
+    }
+});
+
+/* GUESS EVENTS */
+
+guessBtn.addEventListener("click", handleGuess);
+
+guessInput.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter") {
+        handleGuess();
     }
 });
