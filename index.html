@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
     <title>X-GRID</title>
 
     <link rel="stylesheet" href="styles.css">
@@ -10,85 +15,108 @@
 
 <body>
 
-<header>
-    <h1>X-GRID</h1>
-    <br>
-    <p>fyi: don't try to guess "X", any wrong answers will result in a 10-minute cool down being activated:(</p>
-</header>
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
 
-<div class="main-layout">
+    <header>
 
-    <!-- GRID -->
+        <h1>X-GRID</h1>
+        <br>
+        <p>
+            fyi: don't try to guess "X", any wrong answers will result in a 10-minute cool down being activated:(
+        </p>
 
-    <div class="grid-container">
-        <div class="grid" id="grid"></div>
-    </div>
+    </header>
 
-    <!-- SIDE PANEL -->
+    <div class="main-layout">
 
-    <div class="panel">
+        <!-- GRID SECTION -->
 
-        <!-- CODE INPUT -->
+        <div class="grid-wrapper">
 
-        <h2>Enter Hint Code</h2>
+            <div class="grid-container">
 
-        <div class="input-group">
+                <div class="grid" id="grid"></div>
 
-            <input
-                type="text"
-                id="codeInput"
-                placeholder="Enter code..."
-                maxlength="4"
-            >
-
-            <button id="submitBtn">
-                Apply
-            </button>
+            </div>
 
         </div>
 
-        <div class="status" id="status"></div>
+        <!-- SIDE PANEL -->
 
-        <!-- USED CODES -->
+        <div class="panel">
 
-        <h2>Used Codes</h2>
+            <!-- CODE INPUT -->
 
-        <div class="used-codes" id="usedCodes"></div>
-
-        <!-- X GUESSING -->
-
-        <div class="guess-section">
-
-            <h2>What's X?</h2>
+            <h2>Enter Code</h2>
 
             <div class="input-group">
 
                 <input
-                    type="number"
-                    id="guessInput"
-                    placeholder="Enter guess..."
+                    type="text"
+                    id="codeInput"
+                    placeholder="Enter code..."
+                    maxlength="4"
                 >
 
-                <button id="guessBtn">
-                    Enter
+                <button id="submitBtn">
+                    Apply
                 </button>
 
             </div>
 
-            <div class="guess-status" id="guessStatus"></div>
+            <div class="status" id="status"></div>
 
-            <div class="cooldown-timer" id="cooldownTimer"></div>
+            <!-- USED CODES -->
+
+            <h2>Used Codes</h2>
+
+            <div
+                class="used-codes"
+                id="usedCodes"
+            ></div>
+
+            <!-- GUESS SECTION -->
+
+            <div class="guess-section">
+
+                <h2>What's X?</h2>
+
+                <div class="input-group">
+
+                    <input
+                        type="number"
+                        id="guessInput"
+                        placeholder="Enter guess..."
+                    >
+
+                    <button id="guessBtn">
+                        Guess
+                    </button>
+
+                </div>
+
+                <div
+                    class="guess-status"
+                    id="guessStatus"
+                ></div>
+
+                <div
+                    class="cooldown-timer"
+                    id="cooldownTimer"
+                ></div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <footer>
+        Placeholder
+    </footer>
 
-<footer>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
