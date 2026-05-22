@@ -208,6 +208,8 @@ function applyCode() {
 
     addCodePill(code);
 
+    saveCodesToStorage();
+
     setStatus(`Applied code: ${code}`);
 
     codeInput.value = "";
@@ -321,6 +323,37 @@ function updateCooldownDisplay(seconds) {
     cooldownTimer.textContent =
         `Cooldown Remaining: ${formatted}`;
 }
+
+/* =========================
+   PERSISTENCE
+========================= */
+
+function saveCodesToStorage() {
+    localStorage.setItem("xgrid-codes", JSON.stringify([...usedCodes]));
+}
+
+function loadCodesFromStorage() {
+
+    const saved = localStorage.getItem("xgrid-codes");
+
+    if (!saved) return;
+
+    const codes = JSON.parse(saved);
+
+    for (const code of codes) {
+
+        if (rules[code] && !usedCodes.has(code)) {
+
+            usedCodes.add(code);
+
+            rules[code]();
+
+            addCodePill(code);
+        }
+    }
+}
+
+loadCodesFromStorage();
 
 /* =========================
    EVENTS
