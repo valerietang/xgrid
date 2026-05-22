@@ -160,6 +160,8 @@ const rules = {
 
     PYRS: () => eliminateMultiplesOf(8),
 
+    FREE: () => eliminateNumber(1),
+
     KTDE: () => {
 
         const doubles = [
